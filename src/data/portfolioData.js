@@ -1,14 +1,16 @@
+const base = import.meta.env.BASE_URL || '/';
+
 export const portfolioData = {
   personal: {
     name: "Divyanshu Sahu",
     shortName: "Divyanshu",
-    avatar: "/model-3d-front.png",
-    avatarFront: "/model-3d-front.png",
-    avatarReal: "/model-real-photo.png",
-    avatarRight: "/model-3d-side-right.png",
-    avatarBack: "/model-3d-back.png",
-    avatarLeft: "/model-3d-side-left.png",
-    avatarOriginal: "/profile.png",
+    avatar: `${base}model-3d-front.png`,
+    avatarFront: `${base}model-3d-front.png`,
+    avatarReal: `${base}model-real-photo.png`,
+    avatarRight: `${base}model-3d-side-right.png`,
+    avatarBack: `${base}model-3d-back.png`,
+    avatarLeft: `${base}model-3d-side-left.png`,
+    avatarOriginal: `${base}profile.png`,
     role: "Software Engineer & Java Backend Developer",
     secondaryRoles: [
       "Spring Boot Specialist",

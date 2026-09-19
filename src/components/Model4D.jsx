@@ -94,11 +94,12 @@ export default function Model4D() {
     // 5. Texture Loading (Front 3D, Real Photo, Right Profile, Back View, Left Profile)
     const textureLoader = new THREE.TextureLoader();
 
-    const frontTex = textureLoader.load((portfolioData.personal.avatarFront || '/model-3d-front.png') + '?v=3');
-    const realPhotoTex = textureLoader.load((portfolioData.personal.avatarReal || '/model-real-photo.png') + '?v=3');
-    const rightTex = textureLoader.load((portfolioData.personal.avatarRight || '/model-3d-side-right.png') + '?v=3');
-    const backTex = textureLoader.load((portfolioData.personal.avatarBack || '/model-3d-back.png') + '?v=3');
-    const leftTex = textureLoader.load((portfolioData.personal.avatarLeft || '/model-3d-side-left.png') + '?v=3');
+    const base = import.meta.env.BASE_URL || '/';
+    const frontTex = textureLoader.load((portfolioData.personal.avatarFront || `${base}model-3d-front.png`) + '?v=3');
+    const realPhotoTex = textureLoader.load((portfolioData.personal.avatarReal || `${base}model-real-photo.png`) + '?v=3');
+    const rightTex = textureLoader.load((portfolioData.personal.avatarRight || `${base}model-3d-side-right.png`) + '?v=3');
+    const backTex = textureLoader.load((portfolioData.personal.avatarBack || `${base}model-3d-back.png`) + '?v=3');
+    const leftTex = textureLoader.load((portfolioData.personal.avatarLeft || `${base}model-3d-side-left.png`) + '?v=3');
 
     [frontTex, realPhotoTex, rightTex, backTex, leftTex].forEach((t) => {
       t.minFilter = THREE.LinearFilter;
