@@ -14,9 +14,11 @@ export default function ResumeModal({ onClose }) {
     };
     window.addEventListener('keydown', handleKeyDown);
     document.body.style.overflow = 'hidden';
+    document.body.classList.add('resume-open');
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = 'auto';
+      document.body.classList.remove('resume-open');
     };
   }, [onClose]);
 
@@ -25,7 +27,7 @@ export default function ResumeModal({ onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto animate-fadeIn">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto animate-fadeIn resume-modal-overlay">
       {/* Backdrop */}
       <div 
         className="fixed inset-0 bg-black/85 backdrop-blur-md transition-opacity no-print"
@@ -33,7 +35,7 @@ export default function ResumeModal({ onClose }) {
       />
 
       {/* Modal Container */}
-      <div className="relative w-full max-w-4xl bg-white text-slate-900 rounded-3xl shadow-2xl overflow-hidden z-10 my-6 max-h-[92vh] flex flex-col">
+      <div className="relative w-full max-w-4xl bg-white text-slate-900 rounded-3xl shadow-2xl overflow-hidden z-10 my-6 max-h-[92vh] flex flex-col resume-modal-container">
         
         {/* Modal Toolbar (hidden on print) */}
         <div className="p-4 sm:px-6 bg-slate-900 text-white flex items-center justify-between no-print border-b border-slate-800">
@@ -63,10 +65,10 @@ export default function ResumeModal({ onClose }) {
         </div>
 
         {/* Printable Resume Document */}
-        <div className="p-8 sm:p-12 overflow-y-auto font-sans leading-relaxed space-y-8 bg-white selection:bg-primary-200">
+        <div className="p-8 sm:p-12 overflow-y-auto font-sans leading-relaxed space-y-6 bg-white selection:bg-primary-200 resume-document">
           
           {/* Header with Photo */}
-          <div className="border-b-2 border-slate-900 pb-6">
+          <div className="resume-section border-b-2 border-slate-900 pb-5">
             <div className="flex flex-col-reverse sm:flex-row items-start sm:items-center justify-between gap-6">
               <div>
                 <h1 className="font-heading font-black text-3xl sm:text-4xl text-slate-900 tracking-tight uppercase">
@@ -76,11 +78,11 @@ export default function ResumeModal({ onClose }) {
                   Software Developer || MCA Graduate || Java & Spring Boot Specialist || PostgreSQL & MySQL DBA
                 </p>
               </div>
-              {personal.avatar && (
+              {(personal.avatarOriginal || personal.avatar) && (
                 <img
-                  src={personal.avatar}
+                  src={personal.avatarOriginal || personal.avatar}
                   alt="Divyanshu Sahu"
-                  className="w-20 h-24 sm:w-24 sm:h-28 object-contain shrink-0"
+                  className="w-20 h-24 sm:w-24 sm:h-28 object-contain shrink-0 rounded-lg shadow-sm"
                 />
               )}
             </div>
@@ -115,8 +117,8 @@ export default function ResumeModal({ onClose }) {
           </div>
 
           {/* Career Summary */}
-          <div>
-            <h2 className="font-heading font-bold text-sm uppercase tracking-wider text-slate-900 border-b border-slate-300 pb-1 mb-3">
+          <div className="resume-section">
+            <h2 className="font-heading font-bold text-sm uppercase tracking-wider text-slate-900 border-b border-slate-300 pb-1 mb-2.5">
               Career Summary
             </h2>
             <p className="text-slate-700 text-sm leading-relaxed">
@@ -125,8 +127,8 @@ export default function ResumeModal({ onClose }) {
           </div>
 
           {/* Technical Skills */}
-          <div>
-            <h2 className="font-heading font-bold text-sm uppercase tracking-wider text-slate-900 border-b border-slate-300 pb-1 mb-3">
+          <div className="resume-section">
+            <h2 className="font-heading font-bold text-sm uppercase tracking-wider text-slate-900 border-b border-slate-300 pb-1 mb-2.5">
               Technical Competencies
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-6 text-xs sm:text-sm text-slate-700">
@@ -140,11 +142,11 @@ export default function ResumeModal({ onClose }) {
           </div>
 
           {/* Work Experience */}
-          <div>
-            <h2 className="font-heading font-bold text-sm uppercase tracking-wider text-slate-900 border-b border-slate-300 pb-1 mb-4">
+          <div className="resume-section">
+            <h2 className="font-heading font-bold text-sm uppercase tracking-wider text-slate-900 border-b border-slate-300 pb-1 mb-3">
               Professional Experience
             </h2>
-            <div className="space-y-4">
+            <div className="space-y-3.5">
               {experience.map((job) => (
                 <div key={job.id} className="text-xs sm:text-sm">
                   <div className="flex flex-wrap justify-between items-baseline">
@@ -165,11 +167,11 @@ export default function ResumeModal({ onClose }) {
           </div>
 
           {/* Academic Projects */}
-          <div>
-            <h2 className="font-heading font-bold text-sm uppercase tracking-wider text-slate-900 border-b border-slate-300 pb-1 mb-3">
+          <div className="resume-section">
+            <h2 className="font-heading font-bold text-sm uppercase tracking-wider text-slate-900 border-b border-slate-300 pb-1 mb-2.5">
               Key Academic & Software Projects
             </h2>
-            <div className="space-y-3 text-xs sm:text-sm">
+            <div className="space-y-2.5 text-xs sm:text-sm">
               <div>
                 <strong className="text-slate-900">GymNation (Gym Management System):</strong>
                 <span className="text-slate-600"> [Java, NetBeans IDE, MySQL, JDBC, Swing] — </span>
@@ -189,11 +191,11 @@ export default function ResumeModal({ onClose }) {
           </div>
 
           {/* Education */}
-          <div>
-            <h2 className="font-heading font-bold text-sm uppercase tracking-wider text-slate-900 border-b border-slate-300 pb-1 mb-3">
+          <div className="resume-section">
+            <h2 className="font-heading font-bold text-sm uppercase tracking-wider text-slate-900 border-b border-slate-300 pb-1 mb-2.5">
               Education
             </h2>
-            <div className="space-y-2.5 text-xs sm:text-sm">
+            <div className="space-y-2 text-xs sm:text-sm">
               {education.map((edu, i) => (
                 <div key={i} className="flex justify-between items-baseline">
                   <div>
@@ -209,8 +211,8 @@ export default function ResumeModal({ onClose }) {
           </div>
 
           {/* Certifications */}
-          <div>
-            <h2 className="font-heading font-bold text-sm uppercase tracking-wider text-slate-900 border-b border-slate-300 pb-1 mb-3">
+          <div className="resume-section">
+            <h2 className="font-heading font-bold text-sm uppercase tracking-wider text-slate-900 border-b border-slate-300 pb-1 mb-2.5">
               Certifications & Training
             </h2>
             <ul className="list-disc list-inside text-xs sm:text-sm text-slate-700 space-y-1">
