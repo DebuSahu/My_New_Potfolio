@@ -74,7 +74,7 @@ export default function About() {
               <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5 pb-5 border-b border-slate-200 dark:border-slate-800/80">
                 <div className="relative shrink-0">
                   <img
-                    src={personal.avatarOriginal || `${import.meta.env.BASE_URL || '/'}profile.png`}
+                    src={personal.avatar || `${import.meta.env.BASE_URL || '/'}model-3d-front.png`}
                     alt="Divyanshu Sahu"
                     className="w-20 h-24 sm:w-24 sm:h-28 object-contain drop-shadow-md"
                   />

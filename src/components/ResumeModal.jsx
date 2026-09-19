@@ -78,9 +78,9 @@ export default function ResumeModal({ onClose }) {
                   Software Developer || MCA Graduate || Java & Spring Boot Specialist || PostgreSQL & MySQL DBA
                 </p>
               </div>
-              {(personal.avatarOriginal || personal.avatar) && (
+              {(personal.avatarOriginal || `${import.meta.env.BASE_URL || '/'}profile.png`) && (
                 <img
-                  src={personal.avatarOriginal || personal.avatar}
+                  src={personal.avatarOriginal || `${import.meta.env.BASE_URL || '/'}profile.png`}
                   alt="Divyanshu Sahu"
                   className="w-20 h-24 sm:w-24 sm:h-28 object-contain shrink-0 rounded-lg shadow-sm"
                 />
