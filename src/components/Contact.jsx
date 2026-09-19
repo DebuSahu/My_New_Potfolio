@@ -225,9 +225,9 @@ export default function Contact() {
                 <div>
                   <div className="text-xs font-mono text-slate-500 dark:text-slate-400 uppercase">Locations</div>
                   <div className="font-medium text-slate-900 dark:text-white text-sm sm:text-base">
-                    {personal.locations.current}
+                    Current: {personal.locations.current}
                   </div>
-                  <div className="text-xs text-slate-500 dark:text-slate-400">
+                  <div className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
                     Home: {personal.locations.permanent}
                   </div>
                 </div>

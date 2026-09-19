@@ -22,7 +22,7 @@ export const portfolioData = {
     phone: "+91-9651541669",
     rawPhone: "+919651541669",
     locations: {
-      current: "New Delhi, India",
+      current: "Govindpuri, New Delhi",
       permanent: "Kanpur, Uttar Pradesh - 208004"
     },
     socials: {
